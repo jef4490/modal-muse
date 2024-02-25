@@ -4,10 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { pitches, scales } from './constants/constants.js'
 import { getScale } from './calculators/scaleCalculator.js'
+import { getModes, getParallelModes } from './calculators/modeCalculator.js'
 
 function App() {
   const [count, setCount] = useState(0)
-  console.log(getScale("major", 5));
+  let parallelModes = getParallelModes("major", 2);
+  console.log(parallelModes);
+  parallelModes.forEach(mode => {
+    console.log(getScale(mode));
+  });
   return (
     <>
       <div>
@@ -38,6 +43,9 @@ function App() {
       <p>
         Here are your scales and chords!
       </p>
+      <span>Ionian: {getScale(scales["major"], 0)}</span>
+      <br/>
+      <span>Modes: YOLO</span>
     </>
   )
 }
