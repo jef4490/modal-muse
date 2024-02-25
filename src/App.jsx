@@ -7,8 +7,8 @@ import { getScale } from './calculators/scaleCalculator.js'
 import { getModes, getParallelModes } from './calculators/modeCalculator.js'
 
 function App() {
-  const [count, setCount] = useState(0)
-  let parallelModes = getParallelModes("major", 2);
+  const [keyCenter, setKeyCenter] = useState(0)
+  let parallelModes = getParallelModes("major", keyCenter);
   console.log(parallelModes);
   parallelModes.forEach(mode => {
     console.log(getScale(mode));
@@ -24,6 +24,8 @@ function App() {
       <select name="key-center" id="key-center">
         {Object.values(pitches).map((pitch, i) => <option value={pitch.value} key={i} >{pitch.name}</option>)}
       </select>
+      <br/>
+      <input value={keyCenter} onChange={(event) => setKeyCenter(() => event.target.value)}/>
       <br/>
       <label for="scale-group">Scale Group: </label>
       <select name="scale-group" id="scale-group">
@@ -43,9 +45,8 @@ function App() {
       <p>
         Here are your scales and chords!
       </p>
-      <span>Ionian: {getScale(scales["major"], 0)}</span>
       <br/>
-      <span>Modes: YOLO</span>
+      {parallelModes.map((mode) => <div>{getScale(mode)}</div>)}
     </>
   )
 }
