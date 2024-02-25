@@ -2,10 +2,12 @@ import { useState } from 'react'
 import museImg from './assets/muse.png'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { pitches, scales } from './constants/constants.js'
+import { getScale } from './calculators/scaleCalculator.js'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  console.log(getScale("major", 5));
   return (
     <>
       <div>
@@ -15,8 +17,7 @@ function App() {
       <div>
       <label for="key-center">Key Center: </label>
       <select name="key-center" id="key-center">
-        <option value="C">C</option>
-        <option value="C#">C#</option>
+        {Object.values(pitches).map((pitch, i) => <option value={pitch.value} key={i} >{pitch.name}</option>)}
       </select>
       <br/>
       <label for="scale-group">Scale Group: </label>
