@@ -14,5 +14,44 @@ export const pitches = {
 }
 
 export const scales = {
-    major: [0, 2, 4, 5, 7, 9, 11]
+    major: [0, 2, 4, 5, 7, 9, 11],
+    harmonicMinor: [0, 2, 3, 5, 7, 8, 11],
+    melodicMinor: [0, 2, 3, 5, 7, 9, 11]
+}
+
+export const chords = {
+    33: { name: "diminished" },
+    34: { name: "minor" },
+    43: { name: "major" },
+    44: { name: "augmented" }
+}
+
+export const modeNames = {
+    major: [
+        "Ionian",
+        "Dorian",
+        "Phrygian",
+        "Lydian",
+        "Mixolydian",
+        "Aeolian",
+        "Locrian"
+    ],
+    harmonicMinor: [
+        "Harmonic Minor",
+        "Locrian ♮6",
+        "Ionian ♯5",
+        "Altered Dorian",
+        "Phrygian Dominant",
+        "Lydian #2",
+        "Altered Diminished"
+    ],
+    melodicMinor: [
+        "Melodic Minor",
+        "Dorian b2",
+        "Lydian Augmented",
+        "Lydian Dominant",
+        "Mixolydian b5",
+        "Aeolian b5",
+        "Super Locrian"
+    ]
 }
