@@ -4,28 +4,28 @@ function TableHeader({name, scale, mode}) {
   return (
     <tr>
       <th>
-        Mode:
+        Mode
       </th>
       <th>
-        I
+        1
       </th>
       <th>
-        II
+        2
       </th>
       <th>
-        III
+        3
       </th>
       <th>
-        IV
+        4
       </th>
       <th>
-        V
+        5
       </th>
       <th>
-        VI
+        6
       </th>
       <th>
-        VII
+        7
       </th>
     </tr>
   )

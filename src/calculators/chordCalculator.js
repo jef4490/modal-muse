@@ -1,16 +1,24 @@
 import { chords } from "../constants/constants.js"
 
-export const getChord = (mode, startingPitch) => {
+export const getChord = (mode, startingPitch, getSeventhChords) => {
     let currentPitchIndex = getPitchIndex(mode, startingPitch);
     let firstInterval = getInterval(currentPitchIndex, mode)
-    
+
     let pitchOfThird = (startingPitch + firstInterval)%12;
     currentPitchIndex = getPitchIndex(mode, pitchOfThird);
 
     let secondInterval = getInterval(currentPitchIndex, mode);
     
     let chordKey = `${firstInterval}` + `${secondInterval}`;
-    return chords[chordKey].name;
+
+    if(getSeventhChords){
+        let pitchOfFifth = (pitchOfThird + secondInterval)%12;
+        currentPitchIndex = getPitchIndex(mode, pitchOfFifth);
+        let thirdInterval = getInterval(currentPitchIndex, mode);
+        chordKey += thirdInterval;
+    }
+
+    return chords[chordKey].symbol;
 }
 
 function getPitchIndex(mode, startingPitch){

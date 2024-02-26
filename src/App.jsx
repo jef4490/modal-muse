@@ -11,6 +11,7 @@ import TableHeader from './components/tableHeader.jsx';
 function App() {
   const [keyCenter, setKeyCenter] = useState("C");
   const [scaleGroup, setScaleGroup] = useState("major");
+  const [showSeventhChords, setShowSeventhChords] = useState(false);
 
   let parallelModes = []; 
   
@@ -44,6 +45,12 @@ function App() {
         <option value="harmonicMinor">Harmonic Minor</option>
         <option value="melodicMinor">Melodic Minor</option>
       </select>
+      <br/>
+      <label>Jazz Mode: </label>
+      <label class="switch">
+        <input type="checkbox" checked={showSeventhChords} onChange={(event) => setShowSeventhChords(() => event.target.checked)}/>
+        <span class="slider round"></span>
+      </label>
       </div>
       <div className="card">
         <p>
@@ -59,7 +66,9 @@ function App() {
           <TableHeader />
         </thead>
         <tbody>
-          {parallelModes.map((mode, i) => <ModeDisplay key={i} mode={mode} name={namesOfSelectedModes[i]} scale={getScale(mode, keyCenter)}/>)}
+          {parallelModes.map((mode, i) => <ModeDisplay 
+            key={i} mode={mode} name={namesOfSelectedModes[i]} 
+            scale={getScale(mode, keyCenter)} showSeventhChords={showSeventhChords}/>)}
         </tbody>
       </table>
     </>
