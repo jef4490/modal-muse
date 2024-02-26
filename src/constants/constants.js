@@ -1,16 +1,16 @@
 export const pitches = {     
-    0: { value: 0, names: ["C", "B#", "Dbb"]},
-    1: { value: 1, names: ["C#", "Bx", "Db"]},
-    2: { value: 2, names: ["D", "Cx", "Ebb"]},
-    3: { value: 3, names: ["D#", "Eb", "Fbb"]},
-    4: { value: 4, names: ["E", "Dx", "Fb"]},
-    5: { value: 5, names: ["F", "E#", "Gbb"]},
-    6: { value: 6, names: ["F#", "Ex", "Gb"]},
-    7: { value: 7, names: ["G", "Fx", "Abb"]},
-    8: { value: 8, names: ["G#", "Ab"]},
-    9: { value: 9, names: ["A", "Gx", "Bbb"]},
-    10: { value: 10, names: ["A#", "Bb"]},
-    11: { value: 11, names: ["B", "Ax", "Cb"]},
+    0: { value: 0, names: ["C", "B#", "Dbb"], selectable:[0]},
+    1: { value: 1, names: ["C#", "Bx", "Db"], selectable:[0, 2]},
+    2: { value: 2, names: ["D", "Cx", "Ebb"], selectable:[0]},
+    3: { value: 3, names: ["D#", "Eb", "Fbb"], selectable:[0, 1]},
+    4: { value: 4, names: ["E", "Dx", "Fb"], selectable:[0]},
+    5: { value: 5, names: ["F", "E#", "Gbb"], selectable:[0]},
+    6: { value: 6, names: ["F#", "Ex", "Gb"], selectable:[0,2]},
+    7: { value: 7, names: ["G", "Fx", "Abb"], selectable:[0]},
+    8: { value: 8, names: ["G#", "Ab"], selectable:[0, 1]},
+    9: { value: 9, names: ["A", "Gx", "Bbb"], selectable:[0]},
+    10: { value: 10, names: ["A#", "Bb"], selectable:[0, 1]},
+    11: { value: 11, names: ["B", "Ax", "Cb"], selectable:[0]},
 }
 
 export const diatonicNotes = [

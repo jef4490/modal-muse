@@ -9,12 +9,18 @@ import ModeDisplay from './components/modeDisplay.jsx';
 import TableHeader from './components/tableHeader.jsx';
 
 function App() {
-  const [keyCenter, setKeyCenter] = useState(0, "major")
+  const [keyCenter, setKeyCenter] = useState(0)
   const [scaleGroup, setScaleGroup] = useState("major")
   let parallelModes = getParallelModes(scaleGroup, keyCenter);
 
   let namesOfSelectedModes = modeNames[scaleGroup];
-  
+  // let selectableKeyCenters = Object.values(pitches).reduce((accumulator, currentPitch) => {
+  //   currentPitch.selectable.forEach(selectableOption => {
+  //     let selectableKeyCenter = {...currentPitch, displayName: currentPitch.names[selectableOption]};
+  //     accumulator.push(selectableKeyCenter);
+  //   });
+  //   return accumulator;
+  // }, []);
   return (
     <>
       <div>
