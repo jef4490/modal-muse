@@ -1,8 +1,12 @@
 import { pitches, diatonicNotes } from "../constants/constants.js"
 
-export const getScale = (scale) => {
+export const getScale = (scale, firstNoteName) => {
     let previousNoteName = null;
     return scale.map((scaleDegree) => { 
+        if(previousNoteName == null){
+            previousNoteName = firstNoteName;
+            return firstNoteName;
+        }
         let result = findDiatonicNameForPitch(pitches[scaleDegree%12], previousNoteName)
         previousNoteName = result;
         return result;
@@ -10,9 +14,6 @@ export const getScale = (scale) => {
 }
 
 function findDiatonicNameForPitch(pitch, previousNoteName){
-    if(previousNoteName === null){
-        return pitch.names[0];
-    }
     let letterName = diatonicNotes[(getIndexOfDiatonicNote(previousNoteName)+1)%7];
     return pitch.names.find(name => name[0] === letterName);
 }

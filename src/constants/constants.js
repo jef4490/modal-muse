@@ -9,7 +9,7 @@ export const pitches = {
     7: { value: 7, names: ["G", "Fx", "Abb"], selectable:[0]},
     8: { value: 8, names: ["G#", "Ab"], selectable:[0, 1]},
     9: { value: 9, names: ["A", "Gx", "Bbb"], selectable:[0]},
-    10: { value: 10, names: ["A#", "Bb"], selectable:[0, 1]},
+    10: { value: 10, names: ["A#", "Bb", "Cbb"], selectable:[0, 1]},
     11: { value: 11, names: ["B", "Ax", "Cb"], selectable:[0]},
 }
 

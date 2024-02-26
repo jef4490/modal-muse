@@ -9,18 +9,22 @@ import ModeDisplay from './components/modeDisplay.jsx';
 import TableHeader from './components/tableHeader.jsx';
 
 function App() {
-  const [keyCenter, setKeyCenter] = useState(0)
-  const [scaleGroup, setScaleGroup] = useState("major")
-  let parallelModes = getParallelModes(scaleGroup, keyCenter);
+  const [keyCenter, setKeyCenter] = useState("C");
+  const [scaleGroup, setScaleGroup] = useState("major");
 
+  let parallelModes = []; 
+  
   let namesOfSelectedModes = modeNames[scaleGroup];
-  // let selectableKeyCenters = Object.values(pitches).reduce((accumulator, currentPitch) => {
-  //   currentPitch.selectable.forEach(selectableOption => {
-  //     let selectableKeyCenter = {...currentPitch, displayName: currentPitch.names[selectableOption]};
-  //     accumulator.push(selectableKeyCenter);
-  //   });
-  //   return accumulator;
-  // }, []);
+  let selectableKeyCenters = Object.values(pitches).reduce((accumulator, currentPitch) => {
+    currentPitch.selectable.forEach(selectableOption => {
+      let selectableKeyCenter = {...currentPitch, displayName: currentPitch.names[selectableOption]}; 
+      accumulator.push(selectableKeyCenter);
+    });
+    return accumulator;
+  }, []);
+
+  parallelModes = getParallelModes(scaleGroup, selectableKeyCenters.find(selectableKeyCenter => selectableKeyCenter.displayName === keyCenter).value);
+
   return (
     <>
       <div>
@@ -31,7 +35,7 @@ function App() {
       <div>
       <label>Key Center: </label>
       <select name="key-center" id="key-center" value={keyCenter} onChange={(event) => setKeyCenter(() => event.target.value)}>
-        {Object.values(pitches).map((pitch, i) => <option value={pitch.value} key={i}>{pitch.names[0]}</option>)}
+        {selectableKeyCenters.map((pitch, i) => <option value={pitch.displayName} key={i}>{pitch.displayName}</option>)}
       </select>
       <br/>
       <label>Scale Group: </label>
@@ -55,7 +59,7 @@ function App() {
           <TableHeader />
         </thead>
         <tbody>
-          {parallelModes.map((mode, i) => <ModeDisplay key={i} mode={mode} name={namesOfSelectedModes[i]} scale={getScale(mode)}/>)}
+          {parallelModes.map((mode, i) => <ModeDisplay key={i} mode={mode} name={namesOfSelectedModes[i]} scale={getScale(mode, keyCenter)}/>)}
         </tbody>
       </table>
     </>
