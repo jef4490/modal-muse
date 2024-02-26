@@ -21,10 +21,11 @@ function App() {
         <img src={museImg} className="muse" alt="React logo" />
       </div>
       <h1>Modal Muse</h1>
+      <h2>Modal Interchange Calculator</h2>
       <div>
       <label>Key Center: </label>
       <select name="key-center" id="key-center" value={keyCenter} onChange={(event) => setKeyCenter(() => event.target.value)}>
-        {Object.values(pitches).map((pitch, i) => <option value={pitch.value} key={i}>{pitch.name}</option>)}
+        {Object.values(pitches).map((pitch, i) => <option value={pitch.value} key={i}>{pitch.names[0]}</option>)}
       </select>
       <br/>
       <label>Scale Group: </label>
@@ -43,7 +44,7 @@ function App() {
         </p>
       </div>
       <br/>
-      <table class="model-table">
+      <table className="model-table">
         <thead>
           <TableHeader />
         </thead>

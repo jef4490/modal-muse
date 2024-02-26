@@ -70,3 +70,10 @@ button:focus-visible {
 table, th, td, tr.model-table{
   border: 1px solid;
 }
+h1{
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+h2{
+  margin-top: 0em;
+}
