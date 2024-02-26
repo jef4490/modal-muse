@@ -6,7 +6,7 @@ function ModeDisplay({name, scale, mode, showSeventhChords}) {
     <>
     <tr>
         <td>
-            {name} Triads
+            {name}
         </td>
         {scale.map((pitch, i) => <td key={pitch}>{pitch}{getChord(mode, mode[i], showSeventhChords)}</td>)}
     </tr>

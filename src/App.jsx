@@ -54,7 +54,7 @@ function App() {
       </div>
       <div className="card">
         <p>
-          Looking for inspiration? Modal Interchange can add a little flavor to your chord progressions.
+          Looking for inspiration? <a href="https://en.wikipedia.org/wiki/Borrowed_chord" target="_blank">Modal Interchange</a> can add a little flavor to your chord progressions.
         </p>
         <p>
           Choose your key center and quality to see some chords you can borrow from parallel modes.
