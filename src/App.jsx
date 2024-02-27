@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -49,9 +49,10 @@ function App() {
             <Select
               value={keyCenter}
               label="Key Center"
-              onChange={(event) => setKeyCenter(() => event.target.value)}
+              onChange={useCallback((event) => setKeyCenter(() => event.target.value), [keyCenter])}
             >
-              {selectableKeyCenters.map((pitch, i) => <MenuItem value={pitch.displayName} key={i}>{pitch.displayName}</MenuItem>)}
+              {useMemo(() => selectableKeyCenters.map((pitch, i) => <MenuItem value={pitch.displayName} 
+                key={i}>{pitch.displayName}</MenuItem>), [selectableKeyCenters])}
             </Select>
           </FormControl>
         </Box>
@@ -62,7 +63,7 @@ function App() {
               value={keyCenter}
               label="Scale Group"
               value={scaleGroup}
-              onChange={(event) => setScaleGroup(() => event.target.value)}
+              onChange={useCallback((event) => setScaleGroup(() => event.target.value), [scaleGroup])}
             >
               <MenuItem value="major">Major</MenuItem>
               <MenuItem value="harmonicMinor">Harmonic Minor</MenuItem>
@@ -72,7 +73,7 @@ function App() {
           </FormControl>
         </Box>
         <FormGroup>
-          <FormControlLabel control={<Switch checked={showSeventhChords} onChange={(event) => setShowSeventhChords(() => event.target.checked)}/>} label="Jazz Mode" />
+          <FormControlLabel control={<Switch checked={showSeventhChords} onChange={useCallback((event) => setShowSeventhChords(() => event.target.checked), [showSeventhChords])}/>} label="Jazz Mode" />
         </FormGroup>
       </div>
       <div className="card">
@@ -90,9 +91,9 @@ function App() {
             <TableHeader />
           </thead>
           <tbody>
-            {parallelModes.map((mode, i) => <ModeDisplay 
+            {useMemo(() => parallelModes.map((mode, i) => <ModeDisplay 
               key={i} mode={mode} name={namesOfSelectedModes[i]} 
-              scale={getScale(mode, keyCenter)} showSeventhChords={showSeventhChords}/>)}
+              scale={getScale(mode, keyCenter)} showSeventhChords={showSeventhChords}/>), [parallelModes, keyCenter, showSeventhChords])}
           </tbody>
         </table>
       </div>

@@ -7,19 +7,19 @@ export const getScale = (scale, firstNoteName) => {
             previousNoteName = firstNoteName;
             return firstNoteName;
         }
-        let result = findDiatonicNameForPitch(pitches[scaleDegree%12], previousNoteName)
+        const result = findDiatonicNameForPitch(pitches[scaleDegree%12], previousNoteName)
         previousNoteName = result;
         return result;
     });
 }
 
 function findDiatonicNameForPitch(pitch, previousNoteName){
-    let letterName = diatonicNotes[(getIndexOfDiatonicNote(previousNoteName)+1)%7];
+    const letterName = diatonicNotes[(getIndexOfDiatonicNote(previousNoteName)+1)%7];
     return pitch.names.find(name => name[0] === letterName);
 }
 
 function getIndexOfDiatonicNote(pitch){
-    var letterName = pitch[0];
+    const letterName = pitch[0];
     let i = 0;
     while(diatonicNotes[i] != letterName){
         i++;

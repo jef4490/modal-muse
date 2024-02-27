@@ -1,21 +1,16 @@
-import React from 'react';
+import { React, useMemo } from 'react';
 import { getChord } from '../calculators/chordCalculator.js'
 
 function ModeDisplay({name, scale, mode, showSeventhChords}) {
   return (
     <>
-    <tr>
-        <td>
-            {name}
-        </td>
-        {scale.map((pitch, i) => <td key={pitch}>{pitch}{getChord(mode, mode[i], showSeventhChords)}</td>)}
-    </tr>
-    {/* <tr>
-        <td>
-            7th Chords
-        </td>
-        {scale.map((pitch, i) => <td key={pitch}>{getChord(mode, mode[i])}</td>)}
-    </tr> */}
+        <tr>
+            <td>
+                {name}
+            </td>
+            {useMemo(() => scale.map((pitch, i) => <td key={pitch}>{pitch}{getChord(mode, mode[i], showSeventhChords)}</td>), 
+                [scale, mode, showSeventhChords])}
+        </tr>
     </>
   )
 }
