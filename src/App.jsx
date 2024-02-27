@@ -58,7 +58,6 @@ function App() {
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Scale Group</InputLabel>
             <Select
-              value={keyCenter}
               label="Scale Group"
               value={scaleGroup}
               onChange={useCallback((event) => setScaleGroup(() => event.target.value), [scaleGroup])}
