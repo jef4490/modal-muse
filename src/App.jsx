@@ -12,10 +12,8 @@ import museImg from './assets/muse.png'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { pitches, scales, modeNames } from './constants/constants.js'
-import { getScale } from './calculators/scaleCalculator.js'
 import { getModes, getParallelModes } from './calculators/modeCalculator.js'
-import ModeDisplay from './components/modeDisplay.jsx';
-import TableHeader from './components/tableHeader.jsx';
+import ModeTable from './components/modeTable.jsx';
 
 function App() {
   const [keyCenter, setKeyCenter] = useState("C");
@@ -43,10 +41,10 @@ function App() {
       <h1>Modal Muse</h1>
       <h2>Modal Interchange Calculator</h2>
       <div className="selection-section">
-        <Box sx={{ minWidth: 120, maxWidth: 150 }}>
+        <Box sx={{ minWidth: 100, maxWidth: 150 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Key Center</InputLabel>
-            <Select
+            <Select MenuProps={{style: { maxHeight: 400}}}
               value={keyCenter}
               label="Key Center"
               onChange={useCallback((event) => setKeyCenter(() => event.target.value), [keyCenter])}
@@ -86,16 +84,8 @@ function App() {
       </div>
       <br/>
       <div className="table-container">
-        <table className="model-table">
-          <thead>
-            <TableHeader />
-          </thead>
-          <tbody>
-            {useMemo(() => parallelModes.map((mode, i) => <ModeDisplay 
-              key={i} mode={mode} name={namesOfSelectedModes[i]} 
-              scale={getScale(mode, keyCenter)} showSeventhChords={showSeventhChords}/>), [parallelModes, keyCenter, showSeventhChords])}
-          </tbody>
-        </table>
+        <ModeTable keyCenter={keyCenter} parallelModes={parallelModes} showSeventhChords={showSeventhChords} 
+          namesOfSelectedModes={namesOfSelectedModes}/>
       </div>
     </>
   )

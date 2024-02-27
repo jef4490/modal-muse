@@ -8,7 +8,7 @@ export const pitches = {
     6: { value: 6, names: ["F#", "Ex", "G♭"], selectable:[0,2]},
     7: { value: 7, names: ["G", "Fx", "A♭♭"], selectable:[0]},
     8: { value: 8, names: ["G#", "A♭"], selectable:[0, 1]},
-    9: { value: 9, names: ["A", "Gx", "Bbb"], selectable:[0]},
+    9: { value: 9, names: ["A", "Gx", "B♭♭"], selectable:[0]},
     10: { value: 10, names: ["A#", "B♭", "C♭"], selectable:[0, 1]},
     11: { value: 11, names: ["B", "Ax", "C♭"], selectable:[0]},
 }
