@@ -22,10 +22,10 @@ function App() {
 
   let parallelModes = []; 
   
-  let namesOfSelectedModes = modeNames[scaleGroup];
+  const namesOfSelectedModes = modeNames[scaleGroup];
   let selectableKeyCenters = Object.values(pitches).reduce((accumulator, currentPitch) => {
     currentPitch.selectable.forEach(selectableOption => {
-      let selectableKeyCenter = {...currentPitch, displayName: currentPitch.names[selectableOption]}; 
+      const selectableKeyCenter = {...currentPitch, displayName: currentPitch.names[selectableOption]}; 
       accumulator.push(selectableKeyCenter);
     });
     return accumulator;
