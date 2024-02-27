@@ -113,3 +113,8 @@ input:checked + .slider:before {
   gap: 10px;
   justify-content: space-evenly;
 }
+
+.table-container{
+  display: flex;
+  justify-content: center;
+}

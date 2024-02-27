@@ -67,6 +67,7 @@ function App() {
               <MenuItem value="major">Major</MenuItem>
               <MenuItem value="harmonicMinor">Harmonic Minor</MenuItem>
               <MenuItem value="melodicMinor">Melodic Minor</MenuItem>
+              <MenuItem value="melodicMajor">Melodic Major</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -83,16 +84,18 @@ function App() {
         </p>
       </div>
       <br/>
-      <table className="model-table">
-        <thead>
-          <TableHeader />
-        </thead>
-        <tbody>
-          {parallelModes.map((mode, i) => <ModeDisplay 
-            key={i} mode={mode} name={namesOfSelectedModes[i]} 
-            scale={getScale(mode, keyCenter)} showSeventhChords={showSeventhChords}/>)}
-        </tbody>
-      </table>
+      <div className="table-container">
+        <table className="model-table">
+          <thead>
+            <TableHeader />
+          </thead>
+          <tbody>
+            {parallelModes.map((mode, i) => <ModeDisplay 
+              key={i} mode={mode} name={namesOfSelectedModes[i]} 
+              scale={getScale(mode, keyCenter)} showSeventhChords={showSeventhChords}/>)}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }

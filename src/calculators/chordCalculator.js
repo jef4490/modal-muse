@@ -17,7 +17,9 @@ export const getChord = (mode, startingPitch, getSeventhChords) => {
         let thirdInterval = getInterval(currentPitchIndex, mode);
         chordKey += thirdInterval;
     }
-
+    if(!chords[chordKey]){
+        debugger;
+    }
     return chords[chordKey].symbol;
 }
 

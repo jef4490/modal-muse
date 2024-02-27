@@ -20,7 +20,8 @@ export const diatonicNotes = [
 export const scales = {
     major: [0, 2, 4, 5, 7, 9, 11],
     harmonicMinor: [0, 2, 3, 5, 7, 8, 11],
-    melodicMinor: [0, 2, 3, 5, 7, 9, 11]
+    melodicMinor: [0, 2, 3, 5, 7, 9, 11],
+    melodicMajor: [0, 2, 4, 5, 7, 8, 10]
 }
 
 export const chords = {
@@ -65,5 +66,14 @@ export const modeNames = {
         "Mixolydian ♭5",
         "Aeolian ♭5",
         "Super Locrian"
+    ],
+    melodicMajor: [
+        "Melodic Major",
+        "2nd Mode",
+        "3rd Mode",
+        "4th Mode",
+        "5th Mode",
+        "6th Mode",
+        "7th Mode",
     ]
 }
