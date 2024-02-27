@@ -8,7 +8,7 @@ function ModeTableHead({name, scale, mode}) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell>Mode</TableCell>
+        <TableCell >Mode</TableCell>
         <TableCell align="right">1</TableCell>
         <TableCell align="right">2</TableCell>
         <TableCell align="right">3</TableCell>

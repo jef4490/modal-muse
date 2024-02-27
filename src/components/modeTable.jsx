@@ -42,8 +42,8 @@ function createData(
         // </table> */}
 function ModeTable({parallelModes, namesOfSelectedModes, keyCenter, showSeventhChords}) {
   return (
-    <TableContainer sx={{maxWidth:600}} component={Paper}>
-      <Table size="small" aria-label="a dense table">
+    <TableContainer sx={{width: "max-content", marginLeft:'auto', marginRight: 'auto'}} component={Paper}>
+      <Table size="small" aria-label="a dense table" sx={{padding: '1px  1px'}}>
         <ModeTableHead />
         <TableBody>
             {useMemo(() => parallelModes.map((mode, i) => <ModeDisplay 

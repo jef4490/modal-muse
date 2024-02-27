@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 
 function ModeDisplay({name, scale, mode, showSeventhChords}) {
   return (
-    <TableRow key={name}>
+    <TableRow key={name} sx={{padding: 1}}>
         <TableCell align="right">{name}</TableCell>
         {useMemo(() => scale.map((pitch, i) => <TableCell align="right" key={pitch}>
             {pitch}{getChord(mode, mode[i], showSeventhChords)}</TableCell>), 
