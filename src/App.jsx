@@ -19,7 +19,7 @@ import ModeTable from './components/modeTable.jsx';
 
 function App() {
   const isSystemDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
-  const appTheme = createTheme({palette:  { mode: 'dark' }})
+  const appTheme = createTheme({palette:  { mode: isSystemDarkModeOn ? 'dark' : 'light' }})
   
   const [keyCenter, setKeyCenter] = useState("C");
   const [scaleGroup, setScaleGroup] = useState("major");
