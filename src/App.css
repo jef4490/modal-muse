@@ -118,3 +118,13 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
 }
+
+/* Dark mode */
+/* @media (prefers-color-scheme: dark) {
+  body {
+      background-color: black;
+      color: white;
+  } */
+
+  
+}

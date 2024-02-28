@@ -1,4 +1,6 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { createTheme, ThemeProvider} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,6 +18,9 @@ import { getModes, getParallelModes } from './calculators/modeCalculator.js'
 import ModeTable from './components/modeTable.jsx';
 
 function App() {
+  const isSystemDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
+  const appTheme = createTheme({palette:  { mode: 'dark' }})
+  
   const [keyCenter, setKeyCenter] = useState("C");
   const [scaleGroup, setScaleGroup] = useState("major");
   const [showSeventhChords, setShowSeventhChords] = useState(false);
@@ -34,7 +39,7 @@ function App() {
   parallelModes = getParallelModes(scaleGroup, selectableKeyCenters.find(selectableKeyCenter => selectableKeyCenter.displayName === keyCenter).value);
 
   return (
-    <>
+    <ThemeProvider theme={appTheme}>
       <div>
         <img src={museImg} className="muse" alt="React logo" />
       </div>
@@ -86,7 +91,7 @@ function App() {
         <ModeTable keyCenter={keyCenter} parallelModes={parallelModes} showSeventhChords={showSeventhChords} 
           namesOfSelectedModes={namesOfSelectedModes}/>
       </div>
-    </>
+    </ThemeProvider>
   )
 }
 
