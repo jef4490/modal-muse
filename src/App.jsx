@@ -49,7 +49,7 @@ function App() {
         <h1>Modal Muse</h1>
         <h2>Modal Interchange Calculator</h2>
         <div className="selection-section">
-          <Box sx={{ minWidth: 100, maxWidth: 150 }}>
+          <Box sx={{ minWidth: 90, maxWidth: 150 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Key Center</InputLabel>
               <Select MenuProps={{style: { maxHeight: 400}}}
@@ -62,7 +62,7 @@ function App() {
               </Select>
             </FormControl>
           </Box>
-          <Box sx={{ minWidth: 120, maxWidth: 200 }}>
+          <Box sx={{ minWidth: 110, maxWidth: 200 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Scale Group</InputLabel>
               <Select
