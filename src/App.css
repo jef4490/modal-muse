@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
 }
 
 .logo {
@@ -115,8 +116,13 @@ input:checked + .slider:before {
 }
 
 .table-container{
-  display: flex;
-  justify-content: center;
+  overflow-x: scroll;
+}
+
+.the-wrap{
+  margin: 2rem;
+  overflow-y: scroll;
+  height: 1100px;
 }
 
   

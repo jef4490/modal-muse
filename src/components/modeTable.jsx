@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper';
 
 function ModeTable({parallelModes, namesOfSelectedModes, keyCenter, showSeventhChords}) {
   return (
-    <TableContainer sx={{width: "max-content", marginLeft:'auto', marginRight: 'auto'}} component={Paper}>
+    <TableContainer sx={{width: "max-content", marginLeft:'auto', marginRight: 'auto', display: 'flex'}} component={Paper}>
       <Table size="small" aria-label="a dense table" sx={{padding: '1px  1px'}}>
         <ModeTableHead />
         <TableBody>
