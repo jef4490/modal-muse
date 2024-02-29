@@ -3,7 +3,7 @@
   margin: 0 auto;
   text-align: center;
   -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .logo {
@@ -116,12 +116,12 @@ input:checked + .slider:before {
 }
 
 .table-container{
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .the-wrap{
   margin: 2rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 1100px;
 }
 
