@@ -1,9 +1,9 @@
 {
   "name": "modal-muse",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://jef4490.github.io/modal-muse",
+  "homepage": "https://jef4490.github.io/modal-muse",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
