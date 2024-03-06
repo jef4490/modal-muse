@@ -75,5 +75,13 @@ export const modeNames = {
         "5th Mode",
         "6th Mode",
         "7th Mode",
+    ],
+    simpleMajor: [
+        "Major",
+        "Minor"
+    ],
+    simpleMinor: [
+        "Minor",
+        "Major"
     ]
 }

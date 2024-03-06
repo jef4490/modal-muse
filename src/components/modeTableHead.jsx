@@ -2,9 +2,8 @@ import React from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 
-function ModeTableHead({name, scale, mode}) {
+function ModeTableHead({mode}) {
   return (
     <TableHead>
       <TableRow>

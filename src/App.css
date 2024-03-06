@@ -122,5 +122,5 @@ input:checked + .slider:before {
 .the-wrap{
   margin: 2rem;
   overflow-y: auto;
-  height: 1100px;
+  /* height: 1100px; */
 }

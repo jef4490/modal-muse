@@ -1,5 +1,4 @@
 import { scales } from "../constants/constants.js"
-import { getScale } from "./scaleCalculator.js"
 
 export const getModes = (quality) => {
     const result = {};
@@ -29,4 +28,20 @@ export const getParallelModes = (quality, startingPitch) => {
 
 function transposePitch(pitch, interval){
     return (pitch + interval) % 12;
+}
+
+export const getSimpleModes = (quality, startingPitch) => {
+    const modes = getModes("major").filter((_, index) => { return index === 0 || index === 5});
+    if(quality === "simpleMinor"){
+        modes.reverse();
+    }
+
+    const parallelModes = modes.map((mode) => {
+        while(mode[0] != startingPitch){
+            mode = mode.map(pitch => transposePitch(pitch, 1))
+        }
+        return mode;
+    });
+
+    return parallelModes;
 }
