@@ -86,7 +86,7 @@ function App() {
             Looking for inspiration? <a href="https://en.wikipedia.org/wiki/Borrowed_chord" target="_blank">Modal Interchange</a> can add a little flavor to your chord progressions.
           </p>
           <p>
-            Choose your key center and scale group to see some chords you can borrow from parallel modes. test.
+            Choose your key center and scale group to see some chords you can borrow from parallel modes.
           </p>
         </div>
         <br/>
