@@ -15,7 +15,7 @@ function ModeDisplay({name, scale, mode, isFirstMode, complexity}) {
 
   return (
     <TableRow key={name} sx={{padding: 1}}>
-        <TableCell align="right">{name}</TableCell>
+        <TableCell align="right" sx={{textDecoration: shouldUnderlineName(complexity, isFirstMode)? "underline" : "none"}}>{name}</TableCell>
         {useMemo(() => scale.map((pitch, i) => <TableCell align="right" key={pitch} className={isSuggested(i) ? "blob suggested data-cell" : "data-cell"}>
             {pitch}{getChord(mode, mode[i], showSeventhChords)}</TableCell>), 
             [scale, mode, showSeventhChords])}
@@ -27,4 +27,8 @@ export default ModeDisplay;
 
 function shouldDisplayAsSuggestedChord(complexity, isFirstMode, name, i) {
   return complexity === 'simple' && !isFirstMode && suggestedChords[name].includes(i);
+}
+
+function shouldUnderlineName(complexity, isFirstMode){
+  return complexity === 'simple' && isFirstMode;
 }
