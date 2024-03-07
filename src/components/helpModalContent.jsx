@@ -8,13 +8,12 @@ import FirstPage from './modal-pages/firstPage.jsx'
 import SecondPage from './modal-pages/secondPage.jsx'
 import ThirdPage from './modal-pages/thirdPage.jsx'
 
-const HelpModalContent = React.forwardRef((_, ref) => {
+const HelpModalContent = React.forwardRef(({modalIsClosing}, ref) => {
   const [page, setPage] = useState(1);
   const style = {
     position: 'absolute',
     bottom: '15%',
     left: '50%',
-    transform: 'translate(-50%, 0%)',
     maxWidth: 280,
     minWidth: 280,
     bgcolor: 'background.paper',
@@ -27,7 +26,7 @@ const HelpModalContent = React.forwardRef((_, ref) => {
     titleContent = "Beyond Major / Minor"
   }
   return (
-    <Box sx={style} ref={ref} tabIndex={-1}>
+    <Box sx={style} ref={ref} tabIndex={-1} className={modalIsClosing ? "modal-is-closing" : "modal-content"}>
       <Typography id="help-modal-title" variant="h6" component="h1">
         {titleContent}
       </Typography>
