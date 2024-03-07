@@ -12,7 +12,7 @@ const HelpModalContent = React.forwardRef((_, ref) => {
   const [page, setPage] = useState(1);
   const style = {
     position: 'absolute',
-    bottom: '25%',
+    bottom: '15%',
     left: '50%',
     transform: 'translate(-50%, 0%)',
     maxWidth: 280,
