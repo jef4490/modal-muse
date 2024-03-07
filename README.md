@@ -10,3 +10,4 @@ To run locally: `npx vite dev`
 - Add the ability to preview a chord by playing an audio sample or midi implementation.
 - Add more information for new users to get into the app
 - Support persistant selections
+- Update Favicon
