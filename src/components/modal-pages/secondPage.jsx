@@ -17,7 +17,7 @@ const SecondPage = () => {
           namesOfSelectedModes={['Major', 'Minor']}/>
       </div>
       <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-        For example, the <Typography color="secondary" component="span">F minor</Typography> chord that occurs in the C minor scale, might add some interest to your otherwise diatonic to C major chord progression.
+        For example, the <Typography color="secondary" component="span">F minor</Typography> chord that occurs in the C minor scale, might add some interesting flavor to your otherwise diatonic to C major chord progression.
       </Typography>
     </>
   )

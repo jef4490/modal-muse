@@ -9,7 +9,7 @@ const FirstPage = () => {
   return (
     <>
       <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-        When playing in a given key, such as C major, there are 7 diatonic chords. These are the triads built on each note of the C major scale.
+        When playing in a given key, such as C major, there are seven diatonic chords. These are the triads built on each note of the C major scale.
       </Typography>
       <br/>
       <div className="table-container">
