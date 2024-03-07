@@ -6,19 +6,23 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Help, Close } from '@mui/icons-material';
+import Modal from '@mui/material/Modal';
 
 import museImg from './assets/muse.png'
 import './App.css'
 import { pitches, modeNames } from './constants/constants.js'
 import { getSimpleModes, getParallelModes } from './calculators/modeCalculator.js'
 import ModeTable from './components/modeTable.jsx';
+import HelpModalContent from './components/helpModalContent.jsx';
 
 function App() {
   const isSystemDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
   const appTheme = createTheme({palette:  { mode: isSystemDarkModeOn ? 'dark' : 'light' }})  
   const [keyCenter, setKeyCenter] = useState("C");
-  const [scaleGroup, setScaleGroup] = useState("simpleMajor");
+  const [baseScale, setbaseScale] = useState("simpleMajor");
   const [complexity, setComplexity] = useState("simple");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const isSimpleMode = complexity === 'simple';
   let modesToDisplay = []; 
@@ -32,10 +36,10 @@ function App() {
   }, []);
 
   if(isSimpleMode){
-    modesToDisplay = getSimpleModes(scaleGroup, selectableKeyCenters.find(selectableKeyCenter => selectableKeyCenter.displayName === keyCenter).value)
+    modesToDisplay = getSimpleModes(baseScale, selectableKeyCenters.find(selectableKeyCenter => selectableKeyCenter.displayName === keyCenter).value)
   }
   else{
-    modesToDisplay = getParallelModes(scaleGroup, selectableKeyCenters.find(selectableKeyCenter => selectableKeyCenter.displayName === keyCenter).value);
+    modesToDisplay = getParallelModes(baseScale, selectableKeyCenters.find(selectableKeyCenter => selectableKeyCenter.displayName === keyCenter).value);
   }
 
   let simpleInstruction = "";
@@ -46,17 +50,17 @@ function App() {
     )
   }
 
-  const namesOfSelectedModes = modeNames[scaleGroup];
-  const renderScaleGroupSelect = () => {
+  const namesOfSelectedModes = modeNames[baseScale];
+  const renderbaseScaleSelect = () => {
     if(isSimpleMode){
       return(
         <Box sx={{ minWidth: 110, maxWidth: 200 }}>
         <FormControl fullWidth>
-          <InputLabel id="scale-group-select-label">Scale Group</InputLabel>
+          <InputLabel id="base-scale-select-label">Base Scale</InputLabel>
           <Select
-            label="Scale Group"
-            value={scaleGroup}
-            onChange={useCallback((event) => setScaleGroup(() => event.target.value), [scaleGroup])}
+            label="Base Scale"
+            value={baseScale}
+            onChange={useCallback((event) => setbaseScale(() => event.target.value), [baseScale])}
           >
             <MenuItem value="simpleMajor">Major</MenuItem>
             <MenuItem value="simpleMinor">Minor</MenuItem>
@@ -67,11 +71,11 @@ function App() {
       return(
         <Box sx={{ minWidth: 110, maxWidth: 200 }}>
         <FormControl fullWidth>
-          <InputLabel id="scale-group-select-label">Scale Group</InputLabel>
+          <InputLabel id="base-scale-select-label">Base Scale</InputLabel>
           <Select
-            label="Scale Group"
-            value={scaleGroup}
-            onChange={useCallback((event) => setScaleGroup(() => event.target.value), [scaleGroup])}
+            label="Base Scale"
+            value={baseScale}
+            onChange={useCallback((event) => setbaseScale(() => event.target.value), [baseScale])}
           >
             <MenuItem value="major">Major</MenuItem>
             <MenuItem value="harmonicMinor">Harmonic Minor</MenuItem>
@@ -83,14 +87,27 @@ function App() {
     }
   }
 
+  const IconToDisplay = modalIsOpen ? (
+  <Close className={"close-icon"} onClick={useCallback(() => setModalIsOpen(false), [])}/>
+  ) : (<Help className={"help-icon"} onClick={useCallback(() => setModalIsOpen(true), [])}/>);
+
   return (
     <Box className={"the-wrap"} sx={{height: isSimpleMode ? '975px' : '1100px'}}>
       <ThemeProvider theme={appTheme}>
         <div>
+        <Modal
+          open={modalIsOpen}
+          onClose={useCallback(() => setModalIsOpen(false), [])}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <HelpModalContent />
+        </Modal>
+        {IconToDisplay}
           <img src={museImg} className="muse" alt="React logo" />
+          <h1>Modal Mu𝄞e</h1>
+          <h2>Modal Interchange Calculator</h2>
         </div>
-        <h1>Modal Muse</h1>
-        <h2>Modal Interchange Calculator</h2>
         <div className="selection-section">
           <Box sx={{ minWidth: 90, maxWidth: 150 }}>
             <FormControl fullWidth>
@@ -105,7 +122,7 @@ function App() {
               </Select>
             </FormControl>
           </Box>
-          {renderScaleGroupSelect()}
+          {renderbaseScaleSelect()}
           <Box sx={{ minWidth: 100, maxWidth: 100 }}>
             <FormControl fullWidth>
               <InputLabel id="complexity-select-label">Complexity</InputLabel>
@@ -113,7 +130,7 @@ function App() {
                 label="Complexity"
                 value={complexity}
                 onChange={useCallback((event) => { setComplexity(() => event.target.value); 
-                  setScaleGroup(event.target.value === "simple" ? "simpleMajor" : "major") }, [complexity])}
+                  setbaseScale(event.target.value === "simple" ? "simpleMajor" : "major") }, [complexity])}
               >
                 <MenuItem value="simple">Simple</MenuItem>
                 <MenuItem value="advanced">Advanced</MenuItem>
@@ -124,7 +141,7 @@ function App() {
         </div>
         <div className="card">
           <p>
-            Looking for inspiration? <a href="https://en.wikipedia.org/wiki/Borrowed_chord" target="_blank">Modal Interchange</a> can add a little flavor to your chord progressions.
+            Looking for inspiration? <a onClick={useCallback(() => setModalIsOpen(true), [])}>Modal Interchange</a> can add a little flavor to your chord progressions.
           </p>
           <p>
             Choose your key center and scale group to see some chords you can borrow from parallel modes.

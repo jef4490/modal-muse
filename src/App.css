@@ -3,7 +3,7 @@
   margin: 0 auto;
   text-align: center;
   -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .logo {
@@ -123,7 +123,7 @@ input:checked + .slider:before {
 
 .the-wrap{
   margin: 1.25rem;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   /* height: 1100px; */
 }
 
@@ -131,7 +131,7 @@ input:checked + .slider:before {
 	margin: 0%;
   border-radius: 100px;
   box-shadow: 0px 0px 1px 1px #0000001a;
-	animation: pulse 2s infinite;
+	animation: pulse 3s infinite;
 }
 
 .suggested {
@@ -147,7 +147,36 @@ input:checked + .slider:before {
 	0% {
     box-shadow: 0 0 0 0px rgba(187, 134, 252, .3);
   }
-  100% {
+  30% {
+    box-shadow: 0 0 0 0px rgba(187, 134, 252, .3);
+  }
+  65% {
     box-shadow: 0 0 0 10px rgba(187, 134, 252, .2);
   }
+  100% {
+    box-shadow: 0 0 0 0px rgba(187, 134, 252, .3);
+  }
+}
+
+.help-icon{
+  color: #646cff;
+  position: sticky;
+  top: .25em;
+  float: right;
+}
+
+.close-icon{
+  color: #ccc;
+  position: sticky;
+  top: .25em;
+  float: right;
+}
+
+.modal-pagination{
+  display: flex;
+  justify-content: center;
+}
+
+#help-modal-title{
+  text-align: center;
 }
