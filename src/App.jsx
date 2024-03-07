@@ -56,9 +56,9 @@ function App() {
       return(
         <Box sx={{ minWidth: 110, maxWidth: 200 }}>
         <FormControl fullWidth>
-          <InputLabel id="base-scale-select-label">Base Scale</InputLabel>
+          <InputLabel id="base-scale-select-label">Quality</InputLabel>
           <Select
-            label="Base Scale"
+            label="Quality"
             value={baseScale}
             onChange={useCallback((event) => setbaseScale(() => event.target.value), [baseScale])}
           >

@@ -41,12 +41,12 @@ export const chords = {
 
 export const modeNames = {
     major: [
-        "Ionian",
+        "Major",
         "Dorian",
         "Phrygian",
         "Lydian",
         "Mixolydian",
-        "Aeolian",
+        "Nat. Minor",
         "Locrian"
     ],
     harmonicMinor: [
