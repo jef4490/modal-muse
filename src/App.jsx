@@ -38,6 +38,14 @@ function App() {
     modesToDisplay = getParallelModes(scaleGroup, selectableKeyCenters.find(selectableKeyCenter => selectableKeyCenter.displayName === keyCenter).value);
   }
 
+  let simpleInstruction = "";
+
+  if(isSimpleMode){
+    simpleInstruction = (
+      <p>The highlights indicate the most common borrowed chord selections.</p>
+    )
+  }
+
   const namesOfSelectedModes = modeNames[scaleGroup];
   const renderScaleGroupSelect = () => {
     if(isSimpleMode){
@@ -76,7 +84,7 @@ function App() {
   }
 
   return (
-    <Box className={"the-wrap"} sx={{height: isSimpleMode ? '950px' : '1100px'}}>
+    <Box className={"the-wrap"} sx={{height: isSimpleMode ? '975px' : '1100px'}}>
       <ThemeProvider theme={appTheme}>
         <div>
           <img src={museImg} className="muse" alt="React logo" />
@@ -113,7 +121,6 @@ function App() {
               </Select>
             </FormControl>
           </Box>
-
         </div>
         <div className="card">
           <p>
@@ -123,11 +130,11 @@ function App() {
             Choose your key center and scale group to see some chords you can borrow from parallel modes.
           </p>
         </div>
-        <br/>
         <div className="table-container">
           <ModeTable keyCenter={keyCenter} modesToDisplay={modesToDisplay} complexity={complexity} 
             namesOfSelectedModes={namesOfSelectedModes}/>
         </div>
+        {simpleInstruction}
       </ThemeProvider>
     </Box>
   )
