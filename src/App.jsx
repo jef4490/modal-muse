@@ -101,7 +101,7 @@ function App() {
             setTimeout(() => {
               setModalIsOpen(false)
               setModalIsClosing(false)
-            }, 1800);
+            }, 200);
             setModalIsClosing(true);
           }, [])}
           aria-labelledby="modal-modal-title"
@@ -111,9 +111,7 @@ function App() {
         </Modal>
         <div>
         {IconToDisplay}
-          <img src={museImg} sx={{'-webkit-transform': 'translateZ(0)',
-            overflow: 'visible',
-            display: 'inline-block'}} className="muse" alt="React logo" />
+          <img src={museImg} className="muse" alt="React logo" />
           <h1>Modal Mu𝄞e</h1>
           <h2>Modal Interchange Calculator</h2>
         </div>

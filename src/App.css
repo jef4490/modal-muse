@@ -162,12 +162,15 @@ input:checked + .slider:before {
 @keyframes pulse-instant {
 	0% {
     box-shadow: 0 0 0 0px rgba(187, 134, 252, .3);
+    opacity: 1;
   }
   50% {
     box-shadow: 0 0 0 10px rgba(187, 134, 252, .2);
+    opacity: .25;
   }
   100% {
     box-shadow: 0 0 0 0px rgba(187, 134, 252, .3);
+    opacity: 1;
   }
 }
 
@@ -217,5 +220,5 @@ input:checked + .slider:before {
   /* background: pink; */
   -webkit-animation: slide-out 3.0s forwards;
     /* -webkit-animation-delay: 2s; */
-    animation: slide-out 3.0s forwards;
+    animation: slide-out .5s forwards;
 }
