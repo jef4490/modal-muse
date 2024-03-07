@@ -85,3 +85,8 @@ export const modeNames = {
         "Major"
     ]
 }
+
+export const suggestedChords = {
+    Minor: [3, 5, 6],
+    Major: [0, 4]
+}

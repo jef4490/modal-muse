@@ -42,6 +42,6 @@ export const getSimpleModes = (quality, startingPitch) => {
         }
         return mode;
     });
-
+    
     return parallelModes;
 }

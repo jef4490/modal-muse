@@ -117,10 +117,37 @@ input:checked + .slider:before {
 
 .table-container{
   overflow-x: auto;
+  padding-bottom: 20px;
+  padding-right: 10px;
 }
 
 .the-wrap{
-  margin: 2rem;
+  margin: 1.25rem;
   overflow-y: auto;
   /* height: 1100px; */
+}
+
+.blob {
+	margin: 0%;
+  border-radius: 100px;
+  box-shadow: 0px 0px 1px 1px #0000001a;
+	animation: pulse 2s infinite;
+}
+
+.suggested {
+  /* background: #646cff */
+  overflow: visible;
+}
+
+.data-cell{
+  text-align: center !important;
+}
+
+@keyframes pulse {
+	0% {
+    box-shadow: 0 0 0 0px rgba(187, 134, 252, .3);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(187, 134, 252, .2);
+  }
 }
