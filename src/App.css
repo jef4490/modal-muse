@@ -137,6 +137,7 @@ input:checked + .slider:before {
 .suggested {
   /* background: #646cff */
   overflow: visible;
+  transform: translateZ(1);
 }
 
 .data-cell{
@@ -177,6 +178,9 @@ input:checked + .slider:before {
   float: right;
   animation: pulse-instant 1.5s 1;
   border-radius: 5px;
+  -webkit-transform: translateZ(1);
+  transform: translateZ(1);
+  overflow: visible;
 }
 
 .close-icon{
@@ -197,17 +201,16 @@ input:checked + .slider:before {
 
 .modal-content{
   transform: translate(-50%, 0%);
-    /* animation-delay: 2s; */
 }
 
 @-webkit-keyframes slide-out {
-  0% { transform: skew(0deg) translate(-50%, 0%) }
-  100% { transform: skew(-30deg, -30deg) translate(145%, -130%) }
+  0% { transform: skew(0deg) translate(-50%, 0%); }
+  100% { transform: skew(-30deg, -30deg) translate(145%, -130%); opacity: 0; }
 }
 
 @keyframes slide-out {
   0% { transform: skew(0deg) translate(-50%, 0%)  }
-  100% { transform: skew(-30deg, -30deg) translate(145%, -130% ) }
+  100% { transform: skew(-30deg, -30deg) translate(145%, -130% ); opacity: 0; }
 }
 
 .modal-is-closing{
