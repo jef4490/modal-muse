@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme, ThemeProvider} from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -17,6 +17,13 @@ import ModeTable from './components/modeTable.jsx';
 import HelpModalContent from './components/helpModalContent.jsx';
 
 function App() {
+  useEffect(() => {
+    if(!localStorage.getItem('isFirstTimeUser')){
+      localStorage.setItem("isFirstTimeUser", "false");
+      setModalIsOpen(true);
+    }
+  }, [])
+  
   const isSystemDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
   const appTheme = createTheme({palette:  { mode: isSystemDarkModeOn ? 'dark' : 'light' }})  
   const [keyCenter, setKeyCenter] = useState("C");
