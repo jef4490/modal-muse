@@ -166,7 +166,7 @@ function App() {
             Looking for inspiration? <a onClick={useCallback(() => setModalIsOpen(true), [])}>Modal Interchange</a> can add a little flavor to your chord progressions.
           </p>
           <p>
-            Choose your key center and scale group to see some chords you can borrow from parallel modes.
+            Choose your key center and {isSimpleMode ? "quality" : "base scale"} to see some chords you can borrow from parallel modes.
           </p>
         </div>
         <div className="table-container">
