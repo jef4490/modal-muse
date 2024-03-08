@@ -17,7 +17,7 @@ const HelpModalContent = React.forwardRef(({modalIsClosing}, ref) => {
     maxWidth: 280,
     minWidth: 280,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '2px solid #bbb',
     boxShadow: 24,
     p: 4,
   };
