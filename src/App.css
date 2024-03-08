@@ -166,7 +166,7 @@ input:checked + .slider:before {
   }
   50% {
     box-shadow: 0 0 0 10px rgba(187, 134, 252, .2);
-    opacity: .25;
+    opacity: .65;
   }
   100% {
     box-shadow: 0 0 0 0px rgba(187, 134, 252, .3);
