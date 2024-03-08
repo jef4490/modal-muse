@@ -22,12 +22,17 @@ function App() {
       localStorage.setItem("isFirstTimeUser", "false");
       setModalIsOpen(true);
     }
+    var complexityToSet = localStorage.getItem('complexity') || 'simple';
+    setComplexity(complexityToSet);
+    if(complexityToSet !== 'simple'){
+      setBaseScale('major')
+    }
   }, [])
   
   const isSystemDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
   const appTheme = createTheme({palette:  { mode: isSystemDarkModeOn ? 'dark' : 'light' }})  
   const [keyCenter, setKeyCenter] = useState("C");
-  const [baseScale, setbaseScale] = useState("simpleMajor");
+  const [baseScale, setBaseScale] = useState("simpleMajor");
   const [complexity, setComplexity] = useState("simple");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsClosing, setModalIsClosing] = useState(false);
@@ -68,7 +73,7 @@ function App() {
           <Select
             label="Quality"
             value={baseScale}
-            onChange={useCallback((event) => setbaseScale(() => event.target.value), [baseScale])}
+            onChange={useCallback((event) => setBaseScale(() => event.target.value), [baseScale])}
           >
             <MenuItem value="simpleMajor">Major</MenuItem>
             <MenuItem value="simpleMinor">Minor</MenuItem>
@@ -83,7 +88,7 @@ function App() {
           <Select
             label="Base Scale"
             value={baseScale}
-            onChange={useCallback((event) => setbaseScale(() => event.target.value), [baseScale])}
+            onChange={useCallback((event) => setBaseScale(() => event.target.value), [baseScale])}
           >
             <MenuItem value="major">Major</MenuItem>
             <MenuItem value="harmonicMinor">Harmonic Minor</MenuItem>
@@ -143,8 +148,11 @@ function App() {
               <Select
                 label="Complexity"
                 value={complexity}
-                onChange={useCallback((event) => { setComplexity(() => event.target.value); 
-                  setbaseScale(event.target.value === "simple" ? "simpleMajor" : "major") }, [complexity])}
+                onChange={useCallback((event) => { 
+                  localStorage.setItem('complexity', event.target.value);
+                  setComplexity(() => event.target.value); 
+                  setBaseScale(event.target.value === "simple" ? "simpleMajor" : "major"); 
+                }, [complexity])}
               >
                 <MenuItem value="simple">Simple</MenuItem>
                 <MenuItem value="advanced">Advanced</MenuItem>
