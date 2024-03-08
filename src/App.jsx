@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme, ThemeProvider} from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -17,12 +17,20 @@ import ModeTable from './components/modeTable.jsx';
 import HelpModalContent from './components/helpModalContent.jsx';
 
 function App() {
+  useEffect(() => {
+    if(!localStorage.getItem('isFirstTimeUser')){
+      localStorage.setItem("isFirstTimeUser", "false");
+      setModalIsOpen(true);
+    }
+  }, [])
+  
   const isSystemDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
   const appTheme = createTheme({palette:  { mode: isSystemDarkModeOn ? 'dark' : 'light' }})  
   const [keyCenter, setKeyCenter] = useState("C");
   const [baseScale, setbaseScale] = useState("simpleMajor");
   const [complexity, setComplexity] = useState("simple");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsClosing, setModalIsClosing] = useState(false);
 
   const isSimpleMode = complexity === 'simple';
   let modesToDisplay = []; 
@@ -94,15 +102,21 @@ function App() {
   return (
     <Box className={"the-wrap"} sx={{height: isSimpleMode ? '975px' : '1100px'}}>
       <ThemeProvider theme={appTheme}>
-        <div>
         <Modal
           open={modalIsOpen}
-          onClose={useCallback(() => setModalIsOpen(false), [])}
+          onClose={useCallback(() => {
+            setTimeout(() => {
+              setModalIsOpen(false)
+              setModalIsClosing(false)
+            }, 200);
+            setModalIsClosing(true);
+          }, [])}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <HelpModalContent />
+          <HelpModalContent modalIsClosing={modalIsClosing} />
         </Modal>
+        <div>
         {IconToDisplay}
           <img src={museImg} className="muse" alt="React logo" />
           <h1>Modal Mu𝄞e</h1>
